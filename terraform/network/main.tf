@@ -12,6 +12,7 @@ resource "aws_eip" "nat" {
 
   tags = {
     Name = "${local.project_name}-nat-eip-${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -20,6 +21,7 @@ resource "aws_internet_gateway" "gw" {
 
   tags = {
     Name = "${local.project_name}-gw-${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -30,6 +32,7 @@ resource "aws_subnet" "public" {
 
   tags = {
     Name = "${local.project_name}-public-subnet-${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -41,6 +44,7 @@ resource "aws_subnet" "private" {
 
   tags = {
     Name = "${local.project_name}-private-subnet-${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -50,6 +54,7 @@ resource "aws_nat_gateway" "main" {
 
   tags = {
     Name = "${local.project_name}-nat-${var.environment}"
+    Environment = var.environment
   }
 
   depends_on = [aws_internet_gateway.gw]
@@ -66,6 +71,7 @@ resource "aws_route_table" "public" {
 
   tags = {
     Name = "${local.project_name}-public-rt-${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -84,6 +90,7 @@ resource "aws_route_table" "private" {
 
   tags = {
     Name = "${local.project_name}-private-rt-${var.environment}"
+    Environment = var.environment
   }
 }
 
